@@ -166,7 +166,7 @@ Child element for list items. Default: `'li'`.
 
 __distanceElem__
 
-Element that displays the distance for each address. Has to be a child of `listElem` (e.g. `li). Default: `'.distance'`.
+Element that displays the distance for each address. Has to be a child of `listElem` (e.g. li). Default: `'.distance'`.
 
 __geoAdrElem__
 

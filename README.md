@@ -114,11 +114,11 @@ Following options can be used to customize the plugin:
 
 __sorting__
 
-Set to false if you don't want addresses to be sorted by distance automatically. Default: `true`.
+Set to `false` if you don't want addresses to be sorted by distance automatically. Default: `true`.
 
 __manualCheck__
 
-Set to true if you want to disable automatic geolocating, and let the user manually geolocate using a link. Default: `false`.
+Set to `true` if you want to disable automatic geolocating, and let the user manually geolocate using a link. Default: `false`.
 
 Example:
 

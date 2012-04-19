@@ -345,10 +345,22 @@
 
 					if ( status === 'OK' ) {
 						var resultRoute = result.routes[0].legs[0],
-						resultRouteEnd = resultRoute.end_location;
+						resultRouteEnd = resultRoute.end_location,
+						routeStr = '',
+						i = 0;
+
+						for (var prop in resultRouteEnd) {
+							if ( resultRouteEnd.hasOwnProperty(prop) ) {
+								routeStr += resultRouteEnd[prop];
+								if ( !i ) {
+									routeStr += ', ';
+								}
+								i++;
+							}
+						}
 
 						address.distance = resultRoute.distance.value;
-						address.endloc = resultRouteEnd.Ya + ', ' + resultRouteEnd.Za;
+						address.endloc = routeStr;
 					} else {
 						address.distance = settings.distanceUnknownStr;
 						address.endloc = null;

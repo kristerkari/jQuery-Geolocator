@@ -17,7 +17,7 @@
 		maximumAge:         60000, // Number - Setting for HTML geolocation "maximunAge". Default: don't re-get geolocation if it is less than 1min old.
 		apiKey:             null, // String - Google API key for loading Google JS API & Maps API
 		locationsElem:      null, // String - This is the container element for your address list(s) (e.g. #locations)
-		geodataElem:        '#geodata', // String - Element for displaying visitors current location. This element should be unique for each instance.
+		geodataElem:        '#geodata', // String - Element for displaying visitor's current location. This element should be unique for each instance.
 		recheckElem:        '#recheck', // String - Element for enabling re-checking of distances. this element should be unique for each instance.
 		checkElem:          '#check', // String - Element to use to check distances if "manualCheck" is enabled. This element should be unique for each instance.
 		notificationElem:   '.notification', // String - Notification element (e.g. "Getting geolocation...")

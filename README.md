@@ -88,7 +88,7 @@ $(document).ready(function() {
 	$("#locations").geolocator({ distanceBigStr: 'km', distanceSmallStr: 'm' });
 });
 </script>
-``
+```
 
 You can also use the plugin without manually including Google API script tags, but it is not recommended since it will slow down the loading of the plugin as it has to load the Google APIs after it has been initialized.
 

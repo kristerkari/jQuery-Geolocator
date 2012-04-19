@@ -202,7 +202,7 @@ Language string that is displayed when your location is not found. Default: `'Co
 
 __mapsLinkStr__
 
-Language sting for a Google Maps link that is showed next to each address. Default: `'Show directions'`.
+Language string for a Google Maps link that is showed next to each address. Default: `'Show directions'`.
 
 ## Plugin options: W3C Geolocation API options
 

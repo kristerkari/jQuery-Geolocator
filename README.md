@@ -1,4 +1,4 @@
-jQuery-Geolocator
+jQuery Geolocator
 =================
 
 ## Features

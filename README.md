@@ -252,4 +252,4 @@ This software is released under the [MIT license](http://www.opensource.org/lice
 
 ## Changelog
 
-1.0.0 (20.04.2012) - Initial release
+1.0.0 (_20.04.2012_) - Initial release

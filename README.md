@@ -27,7 +27,7 @@ To use the plugin the following scripts/libraries are required, and should be in
 
 ### 1. Markup
 
-You need to wrap each address inside your list item with [Hcard .adr defined classes](http://microformats.org/wiki/hcard-examples-rfc2426#3.2.1_ADR_Type_Definition), and somewhere inside the list item an element that has `distance` as its classname (that is where the distance for each address is printed). Classnames for default markup can be changed via plugin options.
+You need to wrap each address inside your list item with [Microformats hCard ADR defined classes](http://microformats.org/wiki/hcard-examples-rfc2426#3.2.1_ADR_Type_Definition), and somewhere inside the list item an element that has `distance` as its classname (that is where the distance for each address is printed). Classnames for default markup can be changed via plugin options.
 
 __Example markup:__
 
@@ -170,7 +170,7 @@ Element that displays the distance for each address. Has to be a child of `listE
 
 __geoAdrElem__
 
-Element that holds each address. Has to be a child of `listElem`. [Hcard .adr defined classes](http://microformats.org/wiki/hcard-examples-rfc2426#3.2.1_ADR_Type_Definition). Default: `'.adr'`.
+Element that holds each address. Has to be a child of `listElem`. [Microformats hCard ADR defined classes](http://microformats.org/wiki/hcard-examples-rfc2426#3.2.1_ADR_Type_Definition). Default: `'.adr'`.
 
 __mapsLinkElem__
 

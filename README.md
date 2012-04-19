@@ -67,7 +67,7 @@ You can also have multiple lists with different addresses inside your `locations
 
 ### 2. Needed script tags
 
-Before you use the plugin, make sure that you have jQuery, Google JS API, Google Maps and jQuery Geolocator plugin linked inside your `<head>` ``tag, or before your ending `</body>` tag (_recommended_).
+Before you use the plugin, make sure that you have jQuery, Google JS API, Google Maps and jQuery Geolocator plugin linked inside your `<head>` tag, or before your ending `</body>` tag (_recommended_).
 
 ```
 <script src="//www.google.com/jsapi?key=YOUR_GOOGLE_API_KEY"></script>
@@ -238,7 +238,7 @@ $("#locations").on("geolocator:done", function(){
 
 ## Reporting issues and bugs
 
-If something is not working for you or you find a bug, please open a new issue at the issues section.
+If something is not working for you or you find a bug, please open a new issue at the [issues section](https://github.com/kristerkari/jQuery-Geolocator/issues).
 
 ## Developer
 

@@ -235,6 +235,9 @@ $("#locations").on("geolocator:done", function(){
 });
 
 ```
+## Browser support
+
+Uses Geolocation API in newer browsers. A fallback to IP-based geolocation is used in older browsers. Should work in Internet Explorer 7+, Firefox, Safari, Chrome and Opera.
 
 ## Reporting issues and bugs
 

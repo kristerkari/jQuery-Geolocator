@@ -31,37 +31,33 @@ You need to wrap each address inside your list item with [Microformats hCard ADR
 
 __Example markup:__
 
-```
-<div id="locations">
-<ul>
-  <li>
-    <div class="adr">
-      <span class="street-address">2907 E MLK Jr Blvd.</span>, 
-      <span class="locality">Austin</span>, 
-      <span class="region">TX</span>, 
-      <span class="postal-code">78702</span>
+    <div id="locations">
+    <ul>
+      <li>
+        <div class="adr">
+          <span class="street-address">2907 E MLK Jr Blvd.</span>, 
+          <span class="locality">Austin</span>, 
+          <span class="region">TX</span>, 
+          <span class="postal-code">78702</span>
+        </div>
+        <div class="distance"></div>
+      </li>
+      <li>
+        <div class="adr">
+          <span class="street-address">Aleksanterinkatu 52</span>
+          <span class="postal-code">00100</span>, 
+          <span class="locality">Helsinki</span>
+        </div>
+        <div class="distance"></div>
+      </li>
+    </ul>
     </div>
-    <div class="distance"></div>
-  </li>
-  <li>
-    <div class="adr">
-      <span class="street-address">Aleksanterinkatu 52</span>
-      <span class="postal-code">00100</span>, 
-      <span class="locality">Helsinki</span>
-    </div>
-    <div class="distance"></div>
-  </li>
-</ul>
-</div>
-```
 
 If you want, you can optionally set latitude and longitude of the address as [data attributes](http://html5doctor.com/html5-custom-data-attributes/) to `.adr` elements, to get more accurate results:
 
-```
-<div class="adr" data-latitude="##.######" data-longitude="##.######">
-...
-</div>
-```
+    <div class="adr" data-latitude="##.######" data-longitude="##.######">
+    ...
+    </div>
 
 You can also have multiple lists with different addresses inside your `locations` element. However, you should only have one instance of the plugin running, since running multiple instances of the plugin seems to be quite buggy.
 
@@ -69,12 +65,11 @@ You can also have multiple lists with different addresses inside your `locations
 
 Before you use the plugin, make sure that you have jQuery, Google JS API, Google Maps and jQuery Geolocator plugin linked inside your `<head>` tag, or before your ending `</body>` tag (_recommended_).
 
-```
-<script src="//www.google.com/jsapi?key=YOUR_GOOGLE_API_KEY"></script>
-<script src="//maps.googleapis.com/maps/api/js?sensor=true"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script src="js/jquery.geolocator.js"></script>
-```
+
+    <script src="//www.google.com/jsapi?key=YOUR_GOOGLE_API_KEY"></script>
+    <script src="//maps.googleapis.com/maps/api/js?sensor=true"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/jquery.geolocator.js"></script>
 
 ### 3. Javascript
 
@@ -82,31 +77,25 @@ After you have all script tags included, you can call the plugin on a list (unor
 
 Here we are changing the plugin to use kilometers instead of miles:
 
-```
-<script>
-$(document).ready(function() {
-	$("#locations").geolocator({ distanceBigStr: 'km', distanceSmallStr: 'm' });
-});
-</script>
-```
+    <script>
+    $(document).ready(function() {
+    	$("#locations").geolocator({ distanceBigStr: 'km', distanceSmallStr: 'm' });
+    });
+    </script>
 
 You can also use the plugin without manually including Google API script tags, but it is not recommended since it will slow down the loading of the plugin as it has to load the Google APIs after it has been initialized.
 
 This can be done with the `apiKey` option:
 
-```
-<script>
-$(document).ready(function() {
-	$("#locations").geolocator({ apiKey: 'YOUR_GOOGLE_API_KEY' });
-});
-</script>
-```
+    <script>
+    $(document).ready(function() {
+    	$("#locations").geolocator({ apiKey: 'YOUR_GOOGLE_API_KEY' });
+    });
+    </script>
 
 If you later need to refresh the plugin, you can call it again on the same element without any options:
 
-```
-$("#locations").geolocator();
-```
+    $("#locations").geolocator();
 
 ## Plugin options: General settings
 
@@ -122,9 +111,7 @@ Set to `true` if you want to disable automatic geolocating, and let the user man
 
 Example:
 
-```
-<a href="#" id="check">Check geolocation</a>
-```
+    <a href="#" id="check">Check geolocation</a>
 
 __notificationStyle__
 
@@ -229,12 +216,10 @@ The following events are triggered on the element that is running jQuery Geoloca
 
 You can listen to the events by using for example jQuery's `.on()` (or `.bind()`):
 
-```
-$("#locations").on("geolocator:done", function(){
-  // do something
-});
+    $("#locations").on("geolocator:done", function(){
+      // do something
+    });
 
-```
 ## Browser support
 
 Uses Geolocation API in newer browsers. A fallback to IP-based geolocation is used in older browsers. Should work in Internet Explorer 7+, Firefox, Safari, Chrome and Opera.

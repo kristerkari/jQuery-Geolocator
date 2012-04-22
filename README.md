@@ -3,7 +3,7 @@ jQuery Geolocator
 
 ## Features
 
-jQuery Geolocator is a plugin that takes a list of addresses and gets a distance and directions to each address from your current geolocation position. If available, it uses [W3C (_HTML5_) Geolocation API](http://dev.w3.org/geo/api/spec-source.html) to find your current location, and queries Google Maps API for distances to each address inside your list. If the visitor's browser does not support Geolocation API, the more inaccurate Google Maps API is used to get the location.
+jQuery Geolocator is a plugin that takes a list of addresses and gets a distance and directions to each address from your current geolocation position. If available, it uses [W3C Geolocation API (_HTML5 Geolocation_)](http://dev.w3.org/geo/api/spec-source.html) to find your current location, and queries Google Maps API for distances to each address inside your list. If the visitor's browser does not support Geolocation API, the more inaccurate Google Maps API is used to get the location.
 
 This plugin is a fork of / based on [HTML5-GeoLocation-jQuery-Plugin by teleject](http://teleject.github.com/HTML5-GeoLocation-jQuery-Plugin/).
 
@@ -153,15 +153,15 @@ Child element for list items. Default: `'li'`.
 
 __distanceElem__
 
-Element that displays the distance for each address. Has to be a child of `listElem` (_e.g. li_). Default: `'.distance'`.
+Element that displays the distance for each address. Has to be a child of `listElem` element. Default: `'.distance'`.
 
 __geoAdrElem__
 
-Element that holds each address. Has to be a child of `listElem`. [Microformats hCard ADR defined classes](http://microformats.org/wiki/hcard-examples-rfc2426#3.2.1_ADR_Type_Definition). Default: `'.adr'`.
+Element that holds each address. Has to be a child of `listElem` element. [Microformats hCard ADR defined classes](http://microformats.org/wiki/hcard-examples-rfc2426#3.2.1_ADR_Type_Definition). Default: `'.adr'`.
 
 __mapsLinkElem__
 
-Element that is appended to each list item. Has to be a child of `listElem`. Default: `'.maps-link'`.
+Element that is appended to each list item. Has to be a child of `listElem` element. Default: `'.maps-link'`.
 
 __locationsElem__
 
@@ -231,8 +231,6 @@ If something is not working for you or you find a bug, please open a new issue a
 ## Developer
 
 Developed by [Krister Kari](https://twitter.com/#!/kristerkari).
-
-Based on [HTML5-GeoLocation-jQuery-Plugin by teleject](http://teleject.github.com/HTML5-GeoLocation-jQuery-Plugin/).
 
 ## License
 

@@ -190,13 +190,13 @@
 						window.clearTimeout(geoTimeout);
 
 						// visitor's current location lat & lng
-						ownLocation = new googleMaps.LatLng(HTML5Latitude, HTML5Longitude);
+						self.ownLocation = new googleMaps.LatLng(HTML5Latitude, HTML5Longitude);
 
 						self.ownLatLng = HTML5Latitude + ', ' + HTML5Longitude;
 
 						// update own location and lists with lat & lng from HTML5 Geolocation API
-						self.updateOwnLocation(ownLocation);
-						self.loopAddressLists(ownLocation);
+						self.updateOwnLocation();
+						self.loopAddressLists();
 						return;
 					}
 
@@ -218,12 +218,12 @@
 				if ( typeof self.google === 'object' && googleLoader != null && googleClientLoc != null ) {
 
 					// visitor's current location lat & lng
-					ownLocation = new googleMaps.LatLng(googleLatitude, googleLongitude);
+					self.ownLocation = new googleMaps.LatLng(googleLatitude, googleLongitude);
 
 					self.ownLatLng = googleLatitude + ', ' + googleLongitude;
 
-					self.updateOwnLocation(ownLocation);
-					self.loopAddressLists(ownLocation);
+					self.updateOwnLocation();
+					self.loopAddressLists();
 				}
 			}
 
@@ -250,7 +250,7 @@
 
 		},
 
-		updateOwnLocation: function(ownLocation)	{
+		updateOwnLocation: function()	{
 			var self = this,
 			settings = self.settings,
 			$geodataElem = self.$geodataElem,
@@ -258,7 +258,7 @@
 			googleMapsGeocoder = new googleMaps.Geocoder();
 
 			// Use Google Maps geocoder to get visitors own location
-			googleMapsGeocoder.geocode({ latLng: ownLocation }, function(responses, status) {
+			googleMapsGeocoder.geocode({ latLng: self.ownLocation }, function(responses, status) {
 				var debugMsg = '';
 
 				// Check for returned status code
@@ -298,24 +298,28 @@
 			});
 		},
 
-		loopAddressLists: function(ownLocation) {
+		loopAddressLists: function() {
 			var self = this,
-			googleMaps = self.googleMaps,
-			numOfTotalListItems = self.listLength,
-			googleMapsDirections = new googleMaps.DirectionsService();
+				i = 0,
+				len = self.$lists.length;
 
 			// Loop each list element that is inside the main container element
 
-			$.each(self.$lists, function(i, el) {
-				self.getDistances(i, el, numOfTotalListItems, googleMaps, googleMapsDirections, ownLocation);
-			});
+			for ( ; i < len; i++ ) {
+				self.getDistances(i, self.$lists[i]);
+			}
 
 		},
 
-		getDistances: function(i, el, numOfTotalListItems, googleMaps, googleMapsDirections, ownLocation) {
+		getDistances: function(i, el) {
 			var self = this,
 			settings = self.settings,
-			addressArr = self.addressArr;
+			addressArr = self.addressArr,
+			j = 0,
+			len,
+			address,
+			destination;
+			
 
 			// clone our current list element's list items into a new object with address related information
 			addressArr[i] = $(el).children(settings.listElem).clone(true).map(function(i, el) {
@@ -323,7 +327,7 @@
 				$adr = $el.find(settings.geoAdrElem),
 				dataLat = null,
 				dataLng = null,
-				latLng = (dataLat = $adr.data('latitude')) && (dataLng = $adr.data('longitude')) ? new googleMaps.LatLng(dataLat, dataLng) : null;
+				latLng = (dataLat = $adr.data('latitude')) && (dataLng = $adr.data('longitude')) ? new self.googleMaps.LatLng(dataLat, dataLng) : null;
 					
 				return {
 					'addresstxt': $.text($adr.find('.street-address')) + ', ' + $.text($adr.find('.postal-code')) + ', ' + $.text($adr.find('.locality')) + ' ' + $.text($adr.find('.region')),
@@ -334,11 +338,27 @@
 				};
 			});
 
-			// after we have the new objects, loop each to query for a location
-			$.each(addressArr[i], function(i, address) {
-				var destination = address.latLng || address.addresstxt;
+			len = addressArr[i].length;
+
+			for ( ; j < len; j++ ) {
+
+				address = addressArr[i][j];
+				destination = address.latLng || address.addresstxt;
+
+				self.getDistance(address, destination);
+			}
+
+		},
+
+		getDistance: function(address, destination) {
+				var self = this,
+					settings = this.settings,
+					numOfTotalListItems = self.listLength,
+					googleMaps = self.googleMaps,
+					googleMapsDirections = new googleMaps.DirectionsService();
+
 				googleMapsDirections.route({
-					'origin': ownLocation,
+					'origin': self.ownLocation,
 					'destination': destination,
 					'travelMode': googleMaps.DirectionsTravelMode.DRIVING
 				}, function(result, status) {
@@ -347,9 +367,10 @@
 						var resultRoute = result.routes[0].legs[0],
 						resultRouteEnd = resultRoute.end_location,
 						routeStr = '',
-						i = 0;
+						i = 0,
+						prop;
 
-						for (var prop in resultRouteEnd) {
+						for (prop in resultRouteEnd) {
 							if ( resultRouteEnd.hasOwnProperty(prop) ) {
 								routeStr += resultRouteEnd[prop];
 								if ( !i ) {
@@ -374,7 +395,6 @@
 						self.finishLocating();
 					}
 				});
-			});
 
 		},
 

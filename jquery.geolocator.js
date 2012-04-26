@@ -330,7 +330,7 @@
 				latLng = (dataLat = $adr.data('latitude')) && (dataLng = $adr.data('longitude')) ? new self.googleMaps.LatLng(dataLat, dataLng) : null;
 					
 				return {
-					'addresstxt': $.text($adr.find('.street-address')) + ', ' + $.text($adr.find('.postal-code')) + ', ' + $.text($adr.find('.locality')) + ' ' + $.text($adr.find('.region')),
+					'addresstxt': $.text($adr.find('.street-address')) + ', ' + $.text($adr.find('.postal-code')) + ', ' + $.text($adr.find('.locality')) + ' ' + $.text($adr.find('.region')) + ', ' + $.text($adr.find('.country-name')),
 					'latLng': latLng,
 					'element': $el,
 					'distance': null,

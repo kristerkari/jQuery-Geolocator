@@ -154,10 +154,10 @@
 			googleMaps = self.googleMaps,
 			googleLoader = self.google.loader,
 			googleClientLoc = googleLoader.ClientLocation,
-			googleLatitude = null,
-			googleLongitude = null,
-			geoTimeout = null,
-			ownLocation = null;
+			googleLatitude,
+			googleLongitude,
+			geoTimeout,
+			ownLocation;
 
 			if ( googleClientLoc != null ) {
 				googleLatitude = googleClientLoc.latitude;
@@ -325,8 +325,8 @@
 			addressArr[i] = $(el).children(settings.listElem).clone(true).map(function(i, el) {
 			var	$el = $(el), // current single list item element
 				$adr = $el.find(settings.geoAdrElem),
-				dataLat = null,
-				dataLng = null,
+				dataLat,
+				dataLng,
 				latLng = (dataLat = $adr.data('latitude')) && (dataLng = $adr.data('longitude')) ? new self.googleMaps.LatLng(dataLat, dataLng) : null;
 					
 				return {
@@ -432,11 +432,11 @@
 			len = addressArr[i].length,
 			addressesStr = '',
 			j = 0,
-			ownLoc = null,
-			mapsHref = null,
-			address = null,
-			$el = null,
-			$mapsLinkElem = null;
+			ownLoc,
+			mapsHref,
+			address,
+			$el,
+			$mapsLinkElem;
 
 			// Sort by shortest distance if sorting is enabled
 			// ...and if there are more than 1 address inside the current jQuery object

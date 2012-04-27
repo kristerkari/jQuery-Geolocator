@@ -19,7 +19,7 @@ Coming soon...
 
 To use the plugin the following scripts/libraries are required, and should be included on your page:
 
-- [jQuery 1.5+](http://jquery.com/)
+- [jQuery 1.6+](http://jquery.com/)
 - [Google JS API](https://developers.google.com/loader/#GettingStarted) + [API key](https://code.google.com/apis/console)
 - [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference)
 

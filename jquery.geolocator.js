@@ -13,6 +13,7 @@
 		sorting:            true, // Boolean - Set to false if you don't want to sort addresses by distance.
 		debugMode:          false, // Boolean - Set to true to enable error debugging (only works in browsers that have window.console).
 		enableHighAccuracy: false, //Boolean - Setting for HTML5 geolocation "enableHighAccuracy". Setting to true locating takes longer but is more accurate.
+		targetBlank:        false, // Boolean - Set to true if you want to open directions in a new browser tab.
 		timeout:            6000, // Number - Setting for HTML5 geolocation "timeout". Default: times out in 6 seconds.
 		maximumAge:         60000, // Number - Setting for HTML geolocation "maximunAge". Default: don't re-get geolocation if it is less than 1min old.
 		apiKey:             null, // String - Google API key for loading Google JS API & Maps API
@@ -430,7 +431,8 @@
 			clientLoc = self.google.loader.ClientLocation,
 			addressArr = self.addressArr,
 			len = addressArr[i].length,
-			addressesStr = '',
+			addressesHTML = '',
+			mapsLinkHTML = '',
 			j = 0,
 			ownLoc,
 			mapsHref,
@@ -464,19 +466,29 @@
 					mapsHref = 'http://maps.google.com/maps?saddr=' + ownLoc + '&daddr=' + address.endloc;
 
 					if ( !$mapsLinkElem.length ) { // 3
-						$el.append('<a href="' + mapsHref + '" class="' + settings.mapsLinkElem.substring(1) +  '">' + settings.mapsLinkStr + '</a>');
+
+						mapsLinkHTML = '<a href="' + mapsHref + '" class="' + settings.mapsLinkElem.substring(1) +  '"';
+
+						if ( settings.targetBlank ) {
+							mapsLinkHTML += ' target="_blank"';
+						}
+
+						mapsLinkHTML += '>' + settings.mapsLinkStr + '</a>';
+
+						$el.append(mapsLinkHTML);
+
 					} else {
 						$mapsLinkElem.attr('href', mapsHref);
 					}
 				}
 
 				$el.find(settings.distanceElem).text(self.formatDistance(address.distance)); // 4
-				addressesStr += $el.outerHTML(); // 5
+				addressesHTML += $el.outerHTML(); // 5
 			}
 
 			// replace the old HTML inside the current list
 			// with a HTML string that contains all fetched distances
-			self.$lists.eq(i).html(addressesStr);
+			self.$lists.eq(i).html(addressesHTML);
 		},
 
 		formatDistance: function(distance) {

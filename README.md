@@ -121,6 +121,10 @@ __apiKey__
 
 An Google API key is needed if you want the plugin to download all Google APIs for you. Default: `null`.
 
+__targetBlank__
+
+Set to `true` to open all "directions" links in a new browser tab/window. Default: `false`.
+
 __debugMode__
 
 Set to `true` to enable debug mode. It logs all Geolocation and Google API errors to you browser's javascript console. Default: `false`.

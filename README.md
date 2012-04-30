@@ -242,5 +242,6 @@ This software is released under the [MIT license](http://www.opensource.org/lice
 
 ## Changelog
 
+* 1.0.2 (_01.05.2012_) - added clearTimeout to fix a bug in older browsers, and did a small change to link creation 
 * 1.0.1 (_27.04.2012_) - 'targetBlank' option for links, support for country names (_.country-name_) and small fixes to loops.
 * 1.0.0 (_20.04.2012_) - Initial release

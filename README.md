@@ -46,7 +46,8 @@ __Example markup:__
         <div class="adr">
           <span class="street-address">Aleksanterinkatu 52</span>
           <span class="postal-code">00100</span>, 
-          <span class="locality">Helsinki</span>
+          <span class="locality">Helsinki</span> 
+          <span class="country-name">Finland</span>
         </div>
         <div class="distance"></div>
       </li>
@@ -226,7 +227,7 @@ You can listen to the events by using for example jQuery's `.on()` (or `.bind()`
 
 ## Browser support
 
-Uses Geolocation API in newer browsers. A fallback to IP-based geolocation is used in older browsers. Should work in Internet Explorer 7+, Firefox, Safari, Chrome and Opera.
+The script uses Geolocation API in newer browsers. A fallback to IP-based geolocation is used in older browsers. It should work in Internet Explorer 7+, Firefox, Safari, Chrome and Opera. Even though the browser support is quite good, the performance might not be that good in older desktop and mobile browsers.
 
 ## Reporting issues and bugs
 

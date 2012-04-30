@@ -467,18 +467,21 @@
 
 					if ( !$mapsLinkElem.length ) { // 3
 
-						mapsLinkHTML = '<a href="' + mapsHref + '" class="' + settings.mapsLinkElem.substring(1) +  '"';
+						var mapsLinkElem = document.createElement('a'),
+						elemText = document.createTextNode(settings.mapsLinkStr);
+
+						mapsLinkElem.appendChild(elemText);
+						mapsLinkElem.setAttribute('href', mapsHref);
+						mapsLinkElem.className = settings.mapsLinkElem.substring(1);
 
 						if ( settings.targetBlank ) {
-							mapsLinkHTML += ' target="_blank"';
+							mapsLinkElem.setAttribute('target', '_blank');
 						}
 
-						mapsLinkHTML += '>' + settings.mapsLinkStr + '</a>';
-
-						$el.append(mapsLinkHTML);
+						$el[0].appendChild(mapsLinkElem);
 
 					} else {
-						$mapsLinkElem.attr('href', mapsHref);
+						$mapsLinkElem[0].setAttribute('href', mapsHref);
 					}
 				}
 

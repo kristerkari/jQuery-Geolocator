@@ -218,6 +218,8 @@
 				// and update own location and lists with Google's lat & lng
 				if ( typeof self.google === 'object' && googleLoader != null && googleClientLoc != null ) {
 
+					window.clearTimeout(geoTimeout);
+
 					// visitor's current location lat & lng
 					self.ownLocation = new googleMaps.LatLng(googleLatitude, googleLongitude);
 

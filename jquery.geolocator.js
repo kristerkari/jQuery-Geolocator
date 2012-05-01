@@ -1,3 +1,4 @@
+/*! jQuery Geolocator v1.0.2 | http://github.com/kristerkari/jQuery-Geolocator */
 (function($, window, document, undefined){
 	'use strict';
 

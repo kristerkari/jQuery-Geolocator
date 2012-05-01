@@ -13,7 +13,7 @@ At first I only wanted to add some options to the original plugin and fix variab
 
 ## Demo
 
-Coming soon...
+[Click here for a demo](http://krister.fi/jquery.geolocator/#demo)
 
 ## Dependencies
 

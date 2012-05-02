@@ -3,13 +3,13 @@ jQuery Geolocator
 
 ## Features
 
-jQuery Geolocator is a plugin that takes a list of addresses and gets a distance and directions to each address from your current geolocation position. If available, it uses [W3C Geolocation API (_HTML5 Geolocation_)](http://dev.w3.org/geo/api/spec-source.html) to find your current location, and queries Google Maps API for distances to each address inside your list. If the visitor's browser does not support Geolocation API, the more inaccurate Google Maps API is used to get the location.
+jQuery Geolocator is a plugin that takes a list of addresses and gets a distance and directions to each address from your current geolocation position. If available, it uses [W3C Geolocation API (_HTML5 Geolocation_)](http://dev.w3.org/geo/api/spec-source.html) to find your current location, and queries Google Maps API for distances to each address inside your list. If the visitor's browser is old and does not support the Geolocation API, the more inaccurate IP address based geolocation from Google is used.
 
 This plugin is a fork of / based on [HTML5-GeoLocation-jQuery-Plugin by teleject](http://teleject.github.com/HTML5-GeoLocation-jQuery-Plugin/).
 
 ### Why did I decide to make a new plugin instead of using the old one?
 
-At first I only wanted to add some options to the original plugin and fix variables that were leaking into global scope. I soon realized that there were far more things that I wanted change inside the plugin, so I ended up rewriting many parts of the plugin code.
+At first I only wanted to add some options to the original plugin, and fix variables that were leaking into the global scope. I soon realized that there were far more things that I wanted change inside the plugin, so I ended up rewriting many parts of the plugin code.
 
 ## Demo
 
@@ -27,7 +27,7 @@ To use the plugin the following scripts/libraries are required, and should be in
 
 ### 1. Markup
 
-You need to wrap each address inside your list item with [Microformats hCard ADR defined classes](http://microformats.org/wiki/hcard-examples-rfc2426#3.2.1_ADR_Type_Definition), and somewhere inside the list item an element that has `distance` as its classname (that is where the distance for each address is printed). Classnames for default markup can be changed via plugin options.
+You need to wrap each address inside your list item with [Microformats hCard ADR defined classes](http://microformats.org/wiki/hcard-examples-rfc2426#3.2.1_ADR_Type_Definition), and somewhere inside the list item an element that has `distance` as its classname (that is where the distance for that address is printed). Classnames used in default markup can be changed via plugin options.
 
 __Example markup:__
 
@@ -60,9 +60,9 @@ If you want, you can optionally set latitude and longitude of the address as [da
     ...
     </div>
 
-You can also have multiple lists with different addresses inside your `locations` element. However, you should only have one instance of the plugin running, since running multiple instances of the plugin seems to be quite buggy.
+You can also have multiple unordered list elements with different addresses inside your `locations` element. However, you should only have one instance of the plugin running, since running multiple instances of the plugin seems to be quite buggy.
 
-### 2. Needed script tags
+### 2. Needed scripts
 
 Before you use the plugin, make sure that you have jQuery, Google JS API, Google Maps and jQuery Geolocator plugin linked inside your `<head>` tag, or before your ending `</body>` tag (_recommended_).
 
@@ -74,7 +74,7 @@ Before you use the plugin, make sure that you have jQuery, Google JS API, Google
 
 ### 3. Javascript
 
-After you have all script tags included, you can call the plugin on a list (unordered list, ul - by default) with the options you need. (Remember to wrap your code in jQuery's [.ready() function](http://api.jquery.com/ready/))
+After you have all script tags included, you can call the plugin on a list (unordered list, ul - by default) with your custom options. (Remember to wrap your code in jQuery's [.ready() function](http://api.jquery.com/ready/))
 
 Here we are changing the plugin to use kilometers instead of miles:
 
@@ -84,9 +84,7 @@ Here we are changing the plugin to use kilometers instead of miles:
     });
     </script>
 
-You can also use the plugin without manually including Google API script tags, but it is not recommended since it will slow down the loading of the plugin as it has to load the Google APIs after it has been initialized.
-
-This can be done with the `apiKey` option:
+You can also use the plugin without manually including Google API script tags, but it is not recommended since it will slow down the time it takes to find geolocation/distances as it has to load the Google APIs after the plugin has been initialized. This can be done with the `apiKey` option:
 
     <script>
     $(document).ready(function() {
@@ -116,7 +114,7 @@ Example:
 
 __notificationStyle__
 
-A notification style for your 'getting geolocation...' text. `'fade'`, `'slide'` or `'show'`. Default: `'show'`.
+A notification style for your `'getting geolocation...'` text. `'fade'`, `'slide'` or `'show'`. Default: `'show'`.
 
 __apiKey__
 
@@ -124,17 +122,17 @@ An Google API key is needed if you want the plugin to download all Google APIs f
 
 __targetBlank__
 
-Set to `true` to open all "directions" links in a new browser tab/window. Default: `false`.
+Set to `true` to open all `'Show directions'` links in a new browser tab/window. Default: `false`.
 
 __debugMode__
 
-Set to `true` to enable debug mode. It logs all Geolocation and Google API errors to you browser's javascript console. Default: `false`.
+Set to `true` to enable debug mode. This mode logs all Geolocation and Google API errors to you browser's Javascript console. Default: `false`.
 
 ## Plugin options: Elements
 
 __checkElem__
 
-Element selector (a link element) for manualCheck setting. Default: `'#check'`.
+Element selector (a link element) for `manualCheck` setting. Default: `'#check'`.
 
 __recheckElem__
 
@@ -146,11 +144,11 @@ Element that displays your own location. Default: `'#geodata'`.
 
 __notificationElem__
 
-Element that displays a 'getting geolocation...' notification. Default: `'.notification'`.
+Element that displays a `'getting geolocation...'` notification when the plugin is running. Default: `'.notification'`.
 
 __listParentElem__
 
-Parent element for a list. Default: `'ul'`.
+Parent element for a list (_usually ul or ol_). Default: `'ul'`.
 
 __listElem__
 
@@ -227,7 +225,7 @@ You can listen to the events by using for example jQuery's `.on()` (or `.bind()`
 
 ## Browser support
 
-The script uses Geolocation API in newer browsers. A fallback to IP-based geolocation is used in older browsers. It should work in Internet Explorer 7+, Firefox, Safari, Chrome and Opera. Even though the browser support is quite good, the performance might not be that good in older desktop and mobile browsers.
+The script uses Geolocation API in newer browsers. A fallback to a IP address based geolocation from Google is used in older browsers. It should work in Internet Explorer 7+, Firefox, Safari, Chrome and Opera. Even though the browser support is quite good, the performance might not be that good in older desktop and mobile browsers.
 
 ## Reporting issues and bugs
 

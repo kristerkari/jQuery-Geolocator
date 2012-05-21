@@ -66,7 +66,7 @@
 			self.ownLatLng         = null;
 			self.tCount            = 0; // Geolocation timeout counter
 			self.lCount            = 0; // List item counter
-			this.html5Geo          = false;
+			self.html5Geo          = false;
 			self.addressArr.length = 0; // make sure the address list array is empty
 
 			// Bind a click handler if manual check is enabled
@@ -434,7 +434,6 @@
 			addressArr = self.addressArr,
 			len = addressArr[i].length,
 			addressesHTML = '',
-			mapsLinkHTML = '',
 			j = 0,
 			ownLoc,
 			mapsHref,

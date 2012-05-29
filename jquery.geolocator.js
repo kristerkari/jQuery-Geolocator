@@ -152,7 +152,7 @@
 			var self = this,
 			settings = self.settings,
 			$geodataElem = self.$geodataElem,
-			geolocation = window.navigator.geolocation,
+			navigtr = window.navigator,
 			googleMaps = self.googleMaps,
 			googleLoader = self.google.loader,
 			googleClientLoc = googleLoader.ClientLocation,
@@ -177,9 +177,9 @@
 			}
 
 			// try to get HTML5 Geolocation - fallback on google.loader.ClientLocation
-			if ( !self.tCount && geolocation ) {
+			if ( !self.tCount && 'geolocation' in navigtr ) {
 
-				geolocation.getCurrentPosition(function(position) {
+				navigtr.geolocation.getCurrentPosition(function(position) {
 					var positionCoords = position.coords,
 						HTML5Latitude = positionCoords.latitude,
 						HTML5Longitude = positionCoords.longitude;

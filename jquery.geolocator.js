@@ -386,13 +386,19 @@
 
 						address.distance = resultRoute.distance.value;
 						address.endloc = routeStr;
+
+						// add one to our looped address count
+						self.lCount++;
+
+					} else if ( status === 'OVER_QUERY_LIMIT') {
+						setTimeout(function() {
+							self.getDistance(address, destination);
+						}, 1000);
 					} else {
 						address.distance = settings.distanceUnknownStr;
 						address.endloc = null;
+						self.lCount++;
 					}
-
-					// add one to our looped address count
-					self.lCount++;
 
 					// if we have looped all list items
 					if ( self.lCount === numOfTotalListItems ) {

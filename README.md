@@ -19,7 +19,7 @@ At first I only wanted to add some options to the original plugin, and fix varia
 
 To use the plugin the following scripts/libraries are required, and should be included on your page:
 
-- [jQuery](http://jquery.com/) (_requires at least version 1.6_)
+- [jQuery](http://jquery.com/) (_requires at least version 1.6_) or [Zepto](http://http://zeptojs.com/) (_needs a custom build like this `rake concat[-detect:-form:data:selector:fx_methods] dist` you can find the mentioned custom build inside the `dist` folder_)
 - [Google JS API](https://developers.google.com/loader/#GettingStarted) + [API key](https://code.google.com/apis/console)
 - [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference)
 

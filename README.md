@@ -114,7 +114,7 @@ Example:
 
 __notificationStyle__
 
-A notification style for your `'getting geolocation...'` text. `'fade'`, `'slide'` or `'show'`. Default: `'show'`.
+A notification style for your `'getting geolocation...'` text. `'fade'` or `'show'`. Default: `'show'`.
 
 __apiKey__
 

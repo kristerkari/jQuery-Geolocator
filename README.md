@@ -69,7 +69,7 @@ Before you use the plugin, make sure that you have jQuery, Google JS API, Google
 
     <script src="//www.google.com/jsapi?key=YOUR_GOOGLE_API_KEY"></script>
     <script src="//maps.googleapis.com/maps/api/js?sensor=true"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <script src="js/jquery.geolocator.js"></script>
 
 ### 3. Javascript

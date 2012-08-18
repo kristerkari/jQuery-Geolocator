@@ -27,7 +27,7 @@
 		mapsLinkElem:       '.maps-link', // String - Class for Google Maps link element
 		listParentElem:     'ul', // String - Container element for list items (e.g. ul, ol or div).
 		listElem:           'li', // String - List item element (e.g. li or span)
-		notificationStyle:  'show', // String - Notification display style. Options: 'fade', 'slide' or 'show'.
+		notificationStyle:  'show', // String - Notification display style. Options: 'fade' or 'show'.
 		distanceBigStr:     'miles', // String - Default string for distance is in miles, changes to kilometers if set to anything else
 		distanceSmallStr:   'meters', // String - Default string for meters, change to your own language if needed
 		distanceUnknownStr: 'unknown', // String - Default string for unknown distance, change to your own language if needed
@@ -105,8 +105,6 @@
 				if ( $notificationElem.length && !$notificationElem.is(':visible') ) {
 					if ( notificationStyle === 'fade' ) {
 						$notificationElem.fadeIn(300);
-					} else if ( notificationStyle === 'slide' ) {
-						$notificationElem.slideDown(300);
 					} else {
 						$notificationElem.show();
 					}
@@ -137,12 +135,16 @@
 			}
 
 			// Load Google JS API
-			$.getScript('http://www.google.com/jsapi?key=' + self.settings.apiKey)
-			.done(function() {
-				self.init();
-			})
-			.fail(function(jqxhr, settings, exception) {
-				self.debug(exception, 1);
+
+			$.ajax({
+				url: 'http://www.google.com/jsapi?key=' + self.settings.apiKey,
+				dataType: "script",
+				success: function() {
+					self.init();
+				},
+				error: function(jqxhr, settings, exception) {
+					self.debug(exception, 1);
+				}
 			});
 
 		},
@@ -333,7 +335,7 @@
 				latLng = (dataLat = $adr.data('latitude')) && (dataLng = $adr.data('longitude')) ? new self.googleMaps.LatLng(dataLat, dataLng) : null;
 					
 				return {
-					'addresstxt': $.text($adr.find('.street-address')) + ', ' + $.text($adr.find('.postal-code')) + ', ' + $.text($adr.find('.locality')) + ' ' + $.text($adr.find('.region')) + ', ' + $.text($adr.find('.country-name')),
+					'addresstxt': $adr.find('.street-address').text() + ', ' + $adr.find('.postal-code').text() + ', ' + $adr.find('.locality').text() + ' ' + $adr.find('.region').text() + ', ' + $adr.find('.country-name').text(),
 					'latLng': latLng,
 					'element': $el,
 					'distance': null,
@@ -533,8 +535,6 @@
 			if ( $notificationElem.length && $notificationElem.is(':visible') ) {
 				if ( notificationStyle === 'fade' ) {
 					$notificationElem.fadeOut(300);
-				} else if ( notificationStyle === 'slide' ) {
-					$notificationElem.slideUp(300);
 				} else {
 					$notificationElem.hide();
 				}
@@ -596,10 +596,12 @@
 		}
 
 		return this.each(function() {
-			var plugin = $.data(this, pluginName);
+			var $this = $(this),
+				plugin = $this.data(pluginName);
+
 			if ( !plugin ) {
 				options = $.extend({}, defaultSettings, options);
-				$.data(this, pluginName, new GeoLocator(this, options));
+				$this.data(pluginName, new GeoLocator(this, options));
 			} else {
 				plugin.prepare();
 			}
@@ -621,4 +623,4 @@
 
 	};
 
-}(window.jQuery, window, window.document));
+}(window.jQuery || window.Zepto, window, window.document));

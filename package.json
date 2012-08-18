@@ -1,0 +1,33 @@
+{
+  "name": "jquery-geolocator",
+  "description": "A Geolocation API plugin for jQuery",
+  "version": "1.0.3",
+  "author": "Krister Kari",
+  "homepage": "http://krister.fi/jquery.geolocator/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kristerkari/jQuery-Geolocator.git"
+  },
+  "bugs": {
+    "url" : "https://github.com/kristerkari/jQuery-Geolocator/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/cowboy/grunt/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/grunt",
+  "bin": "bin/grunt",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "grunt-sizediff": ">= 0.2.0"
+  },
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "preferGlobal": true,
+  "devDependencies": {}
+}

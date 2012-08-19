@@ -1,4 +1,4 @@
-jQuery Geolocator
+jQuery (Zepto) Geolocator
 =================
 
 ## Features
@@ -64,7 +64,7 @@ You can also have multiple unordered list elements with different addresses insi
 
 ### 2. Needed scripts
 
-Before you use the plugin, make sure that you have jQuery, Google JS API, Google Maps and jQuery Geolocator plugin linked inside your `<head>` tag, or before your ending `</body>` tag (_recommended_).
+Before you use the plugin, make sure that you have jQuery (or Zepto), Google JS API, Google Maps and jQuery Geolocator plugin linked inside your `<head>` tag, or before your ending `</body>` tag (_recommended_).
 
 
     <script src="//www.google.com/jsapi?key=YOUR_GOOGLE_API_KEY"></script>
@@ -74,7 +74,7 @@ Before you use the plugin, make sure that you have jQuery, Google JS API, Google
 
 ### 3. Javascript
 
-After you have all script tags included, you can call the plugin on a list (unordered list, ul - by default) with your custom options. (Remember to wrap your code in jQuery's [.ready() function](http://api.jquery.com/ready/))
+After you have all script tags included, you can call the plugin on a list (unordered list, ul - by default) with your custom options. (Remember to wrap your code in jQuery's or Zepto's [.ready() function](http://api.jquery.com/ready/))
 
 Here we are changing the plugin to use kilometers instead of miles:
 
@@ -95,6 +95,16 @@ You can also use the plugin without manually including Google API script tags, b
 If you later need to refresh the plugin, you can call it again on the same element without any options:
 
     $("#locations").geolocator();
+
+## Info about Zepto support
+
+Default build of Zepto.js does not provide all the methods that are needed, so you need to build a custom version of Zepto.
+
+This is the custom build of Zepto that you can find inside the `dist` folder:
+
+```
+rake concat[-detect:-form:data:selector:fx_methods] dist
+```
 
 ## Plugin options: General settings
 
@@ -241,6 +251,7 @@ This software is released under the [MIT license](http://www.opensource.org/lice
 
 ## Changelog
 
+* 1.0.4 (_19.08.2012_) - Added support for Zepto.js
 * 1.0.3 (_19.08.2012_) - Added a workaround for Google API limitations and added [Grunt](https://github.com/cowboy/grunt) as a build tool
 * 1.0.2 (_01.05.2012_) - added clearTimeout to fix a bug in older browsers, and did a small change to link creation 
 * 1.0.1 (_27.04.2012_) - 'targetBlank' option for links, support for country names (_.country-name_) and small fixes to loops.

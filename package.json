@@ -1,7 +1,7 @@
 {
   "name": "jquery-geolocator",
   "description": "A Geolocation API plugin for jQuery",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Krister Kari",
   "homepage": "http://krister.fi/jquery.geolocator/",
   "repository": {

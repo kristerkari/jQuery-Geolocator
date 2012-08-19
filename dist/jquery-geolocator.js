@@ -1,4 +1,4 @@
-/*! jquery-geolocator - v1.0.3 - 2012-08-19
+/*! jquery-geolocator - v1.0.4 - 2012-08-19
 * http://krister.fi/jquery.geolocator/
 * Copyright (c) 2012 Krister Kari; Licensed MIT */
 

@@ -23,6 +23,7 @@
     "test": "grunt test"
   },
   "dependencies": {
+    "grunt": ">= 0.3.12",
     "grunt-sizediff": ">= 0.2.0"
   },
   "engines": {

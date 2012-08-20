@@ -159,8 +159,7 @@
 			googleClientLoc = googleLoader.ClientLocation,
 			googleLatitude,
 			googleLongitude,
-			geoTimeout,
-			ownLocation;
+			geoTimeout;
 
 			if ( googleClientLoc != null ) {
 				googleLatitude = googleClientLoc.latitude;
@@ -437,7 +436,6 @@
 		updateAddresslist: function(i) {
 			var self = this,
 			settings = self.settings,
-			listElem = settings.listElem,
 			clientLoc = self.google.loader.ClientLocation,
 			addressArr = self.addressArr,
 			len = addressArr[i].length,

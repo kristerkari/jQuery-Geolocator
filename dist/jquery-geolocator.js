@@ -1,4 +1,4 @@
-/*! jquery-geolocator - v1.0.4 - 2012-08-19
+/*! jquery-geolocator - v1.0.4 - 2012-08-21
 * http://krister.fi/jquery.geolocator/
 * Copyright (c) 2012 Krister Kari; Licensed MIT */
 
@@ -163,8 +163,7 @@
 			googleClientLoc = googleLoader.ClientLocation,
 			googleLatitude,
 			googleLongitude,
-			geoTimeout,
-			ownLocation;
+			geoTimeout;
 
 			if ( googleClientLoc != null ) {
 				googleLatitude = googleClientLoc.latitude;
@@ -441,7 +440,6 @@
 		updateAddresslist: function(i) {
 			var self = this,
 			settings = self.settings,
-			listElem = settings.listElem,
 			clientLoc = self.google.loader.ClientLocation,
 			addressArr = self.addressArr,
 			len = addressArr[i].length,

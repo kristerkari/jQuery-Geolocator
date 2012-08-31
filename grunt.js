@@ -63,6 +63,6 @@ module.exports = function(grunt) {
   });
 
   // Default task.
+  grunt.registerTask('default', 'lint concat min sizediff');
   grunt.registerTask('build', 'lint concat min sizediff');
-
 };

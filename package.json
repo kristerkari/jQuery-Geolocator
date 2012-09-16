@@ -9,12 +9,12 @@
     "url": "git://github.com/kristerkari/jQuery-Geolocator.git"
   },
   "bugs": {
-    "url" : "https://github.com/kristerkari/jQuery-Geolocator/issues"
+    "url" : "http://github.com/kristerkari/jQuery-Geolocator/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/cowboy/grunt/blob/master/LICENSE-MIT"
+      "url": "http://github.com/kristerkari/jQuery-Geolocator/blob/master/LICENSE-MIT"
     }
   ],
   "main": "lib/grunt",

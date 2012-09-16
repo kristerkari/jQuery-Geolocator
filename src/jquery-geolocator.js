@@ -390,8 +390,8 @@
 						// add one to our looped address count
 						self.lCount++;
 
-					} else if ( status === 'OVER_QUERY_LIMIT') {
-						setTimeout(function() {
+					} else if ( status === 'OVER_QUERY_LIMIT' ) {
+						window.setTimeout(function() {
 							self.getDistance(address, destination);
 						}, 1000);
 					} else {
@@ -445,7 +445,9 @@
 			mapsHref,
 			address,
 			$el,
-			$mapsLinkElem;
+			$mapsLinkElem,
+			mapsLinkElem,
+			elemText;
 
 			// Sort by shortest distance if sorting is enabled
 			// ...and if there are more than 1 address inside the current jQuery object
@@ -474,7 +476,7 @@
 
 					if ( !$mapsLinkElem.length ) { // 3
 
-						var mapsLinkElem = document.createElement('a'),
+						mapsLinkElem = document.createElement('a');
 						elemText = document.createTextNode(settings.mapsLinkStr);
 
 						mapsLinkElem.appendChild(elemText);

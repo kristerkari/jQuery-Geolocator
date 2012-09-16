@@ -1,4 +1,4 @@
-/*! jquery-geolocator - v1.0.4 - 2012-08-31
+/*! jquery-geolocator - v1.0.4 - 2012-09-16
 * http://krister.fi/jquery.geolocator/
 * Copyright (c) 2012 Krister Kari; Licensed MIT */
 
@@ -394,8 +394,8 @@
 						// add one to our looped address count
 						self.lCount++;
 
-					} else if ( status === 'OVER_QUERY_LIMIT') {
-						setTimeout(function() {
+					} else if ( status === 'OVER_QUERY_LIMIT' ) {
+						window.setTimeout(function() {
 							self.getDistance(address, destination);
 						}, 1000);
 					} else {
@@ -449,7 +449,9 @@
 			mapsHref,
 			address,
 			$el,
-			$mapsLinkElem;
+			$mapsLinkElem,
+			mapsLinkElem,
+			elemText;
 
 			// Sort by shortest distance if sorting is enabled
 			// ...and if there are more than 1 address inside the current jQuery object
@@ -478,7 +480,7 @@
 
 					if ( !$mapsLinkElem.length ) { // 3
 
-						var mapsLinkElem = document.createElement('a'),
+						mapsLinkElem = document.createElement('a');
 						elemText = document.createTextNode(settings.mapsLinkStr);
 
 						mapsLinkElem.appendChild(elemText);

@@ -7,12 +7,9 @@
 
 	/*jshint eqnull: true */
 
-	// plugin name, used with $.data
-	var pluginName = 'jquery-geolocator',
-
 	// Default settings / how to read these settings:
 	// Setting name | setting default value | setting type (Boolean/Number/String) | setting instructions
-	defaultSettings = {
+	var defaultSettings = {
 		manualCheck:        false, // Boolean - Set to true if you want your visitor to be able to manually check geolocation.
 		sorting:            true, // Boolean - Set to false if you don't want to sort addresses by distance.
 		debugMode:          false, // Boolean - Set to true to enable error debugging (only works in browsers that have window.console).
@@ -562,11 +559,10 @@
 		},
 
 		geolocationError: function(error) {
-			var self = this;
 
 			// Log errors only if debugging is enabled
-			if ( self.settings.debugMode ) {
-				self.debug('== HTML5 Geolocation API warning ==\nmessage: ' + error.message + '\ncode: ' + error.code, 2);
+			if ( this.settings.debugMode ) {
+				this.debug('== HTML5 Geolocation API warning ==\nmessage: ' + error.message + '\ncode: ' + error.code, 2);
 			}
 		},
 
@@ -595,17 +591,12 @@
 
 	$.fn.geolocator = function(options) {
 
-		if ( !this.length ) {
-			return this;
-		}
-
-		return this.each(function() {
+		return ( !this.length ) ? this : this.each(function() {
 			var $this = $(this),
-				plugin = $this.data(pluginName);
+				plugin = $this.data('jquery-geolocator');
 
 			if ( !plugin ) {
-				options = $.extend({}, defaultSettings, options);
-				$this.data(pluginName, new GeoLocator(this, options));
+				$this.data('jquery-geolocator', new GeoLocator(this, $.extend({}, defaultSettings, options)));
 			} else {
 				plugin.prepare();
 			}
